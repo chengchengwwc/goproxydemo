@@ -35,6 +35,35 @@
 TCP代理实现
 - 参照 http.util.ReverseProxy实现，服务和代理逻辑分离
 
+### grpc 基本知识
+1. 基于HTTP/2 设计
+2. 支持普通RPC也支持双向流式传递
+3. 相对于thrift 🔗可以多路复用，可以传递header头信息
+
+#### go mod 安装方式
+1. start go mod:export GO111MODULE=on
+2. start proxy: export GOPROXY=https://goproxy.io
+3. grpc go get -u google.golang.org.grpc
+4. proto go get -u github.com/golang/protobuf/proto
+5. protoc-gen-go go get -u github.com/golang/protobuf/protoc-gen-go
+
+#### 构建grpc测试和server client
+1. echo.proto
+2. protoc -I . --go_out=plugins=grpc:proto ./echo.proto
+
+
+#### 构建grpc-gateway 测试服务器让服务器支持http
+1.  go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+2. go install github.com/grpc-ecosystem/grpc-gateway/grotoc-gen-swagger
+3. go install github.com/golang/protobuf/protoc-gen-go
+
+#### 构建grpc-gateway 测试服务器
+1. protoc -I /usr/local/include -I . -I $GOPATH/src/ -I $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=logtostderr=true:proto echo-gateway.proto
+
+
+
+
+
 
 
 
