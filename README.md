@@ -60,7 +60,17 @@ TCP代理实现
 #### 构建grpc-gateway 测试服务器
 1. protoc -I /usr/local/include -I . -I $GOPATH/src/ -I $GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=logtostderr=true:proto echo-gateway.proto
 
-
+#### 服务发现介绍
+1. 服务发现是指用注册中心来记录服务信息，方便其他服务快速查找已经注册的服务
+2. 服务发现分类
+    - 客户端服务发现
+    - 服务端服务发现
+    
+#### zookeeper
+1. 分布式数据库， hadoop子项目
+2. 树状方式维护节点数据的增删该茶
+3. 监听通知机制:通过监听可以获取相应消息事件
+4. 
 
 
 
